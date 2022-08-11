@@ -61,9 +61,9 @@ function theme_rff()
             ylabelpadding = 3
         ),
         Legend = (
-            framevisible = true,
+            framevisible = false,
             framecolor = colorant"#04273C",
-            padding = (3, 3, 3, 3),
+            padding = (0,0,0,0),
         ),
         Axis3 = (
             xgridvisible = false,

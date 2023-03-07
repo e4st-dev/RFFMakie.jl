@@ -9,7 +9,30 @@ using Makie
 using Colors
 using Random
 
-export theme_rff, example_plot
+export theme_rff, rff_colors, example_plot
+function rff_colors()
+    [
+        colorant"#88C4F4",
+        colorant"#FF6663",
+        colorant"#50B161",
+        colorant"#74645E",
+        colorant"#755EA6",
+        colorant"#EAD367",
+        colorant"#F4A25F",
+        colorant"#687D8A",
+        colorant"#B8DCF8",
+        colorant"#FFA3A1",
+        colorant"#96D0A0",
+        colorant"#ACA29F",
+        colorant"#AC9ECA",
+        colorant"#F2E5A4",
+        colorant"#F8C79F",
+        colorant"#04273C",
+    ]
+end
+rff_colors(args...) = rff_colors()[args...]
+rff_black() = colorant"#04273C"
+export rff_black
 
 function theme_rff()
     Theme(
@@ -17,23 +40,7 @@ function theme_rff()
         textcolor = colorant"#04273C",
         linecolor = colorant"#04273C",
         palette=(
-            color=[
-                colorant"#88C4F4",
-                colorant"#FF6663",
-                colorant"#50B161",
-                colorant"#74645E",
-                colorant"#755EA6",
-                colorant"#EAD367",
-                colorant"#F4A25F",
-                colorant"#687D8A",
-                colorant"#B8DCF8",
-                colorant"#FFA3A1",
-                colorant"#96D0A0",
-                colorant"#ACA29F",
-                colorant"#AC9ECA",
-                colorant"#F2E5A4",
-                colorant"#F8C79F",
-            ],
+            color=rff_colors(),
         ),
         Axis = (
             backgroundcolor = :transparent,

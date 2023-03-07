@@ -6,6 +6,15 @@ Theming and color guidance for Resources for the Future comes from [here](https:
 ```julia
 ]dev "git@github.com:Ethan-Russell/RFFMakie.jl.git"
 ```
+Alternatively, you can clone the repo into your dev folder
+``` 
+git clone git@github.com:Ethan-Russell/RFFMakie.jl.git RFFMakie
+```
+and then install it into julia.
+
+```julia
+]dev RFFMakie
+```
 
 # Usage
 ```julia

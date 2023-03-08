@@ -31,8 +31,15 @@ function rff_colors()
     ]
 end
 rff_colors(args...) = rff_colors()[args...]
-rff_black() = colorant"#04273C"
-export rff_black
+rff_black() = colorant"#04273C"; export rff_black
+rff_blue() = colorant"#88c4f4"; export rff_blue
+rff_coral() = colorant"#ff6663"; export rff_coral
+rff_green() = colorant"#50b161"; export rff_green
+rff_brown() = colorant"#74645e"; export rff_brown
+rff_purple() = colorant"#765ea5"; export rff_purple
+rff_orange() = colorant"#f4a25f"; export rff_orange
+rff_yellow() = colorant"#ebd367"; export rff_yellow
+rff_black50() = colorant"#82939e"; export rff_black50
 
 function theme_rff()
     Theme(

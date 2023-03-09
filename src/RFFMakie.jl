@@ -40,6 +40,8 @@ rff_purple() = colorant"#765ea5"; export rff_purple
 rff_orange() = colorant"#f4a25f"; export rff_orange
 rff_yellow() = colorant"#ebd367"; export rff_yellow
 rff_black50() = colorant"#82939e"; export rff_black50
+rff_blue50() = colorant"#c3e2fa"; export rff_blue50
+rff_purple50() = colorant"#baaed2"; export rff_purple50
 
 function theme_rff()
     Theme(

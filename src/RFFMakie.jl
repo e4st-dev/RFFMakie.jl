@@ -41,6 +41,24 @@ rff_orange() = colorant"#f4a25f"; export rff_orange
 rff_yellow() = colorant"#ebd367"; export rff_yellow
 rff_black50() = colorant"#82939e"; export rff_black50
 
+
+"""
+    in2px(in) -> px
+
+    in2px(in...) -> (px...,)
+
+    in2px(v_in) -> v_px
+
+Converts inches to pixels, so that, when a figure is sized to the provided inches (i.e. in word or powerpoint), the fonts will be the stated font sizes.  To be used with `Makie.Figure`, i.e. `f = Figure(resolution=in2px(6.5,4.5))`
+"""
+function in2px(args...)
+    return in2px(args)
+end
+function in2px(x)
+    return x .* 88
+end
+export in2px
+
 function theme_rff()
     Theme(
         font="Calibre",
@@ -48,6 +66,9 @@ function theme_rff()
         linecolor = colorant"#04273C",
         palette=(
             color=rff_colors(),
+        ),
+        Figure = (
+            resolution = in2px(6.5, 4.5), 
         ),
         Axis = (
             backgroundcolor = :transparent,
@@ -72,12 +93,23 @@ function theme_rff()
             xtickscolor = colorant"#04273C",
             ytickscolor = colorant"#04273C",
             xlabelpadding = 3,
-            ylabelpadding = 3
+            ylabelpadding = 3,
+
+            # Font Sizes
+            titlesize = 21,
+            subtitlesize=19,
+            xticklabelsize=15,
+            yticklabelsize=15,
+            xlabelsize=15,
+            ylabelsize=15,
         ),
         Legend = (
             framevisible = false,
             framecolor = colorant"#04273C",
             padding = (0,0,0,0),
+            titlesize = 15,
+            labelsize = 15,
+
         ),
         Axis3 = (
             xgridvisible = false,

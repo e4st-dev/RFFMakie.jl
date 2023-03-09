@@ -57,13 +57,15 @@ function in2px(args...)
     return in2px(args)
 end
 function in2px(x)
-    return x .* 88
+    return x .* 72
 end
 export in2px
 
 function theme_rff()
     Theme(
         font="Calibre",
+        textsize=15,
+        fontsize = 15,
         textcolor = colorant"#04273C",
         linecolor = colorant"#04273C",
         palette=(

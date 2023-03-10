@@ -63,7 +63,13 @@ export in2px
 
 function theme_rff()
     Theme(
-        font="Calibre",
+        fonts = Attributes(
+            regular = "Calibre",
+            bold = "Calibre Semibold",
+            italic = "Calibre Italic",
+            bold_italic = "Calibre Bold Italic",
+        ),
+        resolution = in2px(6.5, 4.5),
         textsize=15,
         fontsize = 15,
         textcolor = colorant"#04273C",
@@ -71,8 +77,12 @@ function theme_rff()
         palette=(
             color=rff_colors(),
         ),
-        Figure = (
-            resolution = in2px(6.5, 4.5), 
+        BarPlot=(
+            label_size = 15,
+        ),
+        Label=(
+            fontsize=15,
+            label_size=15,
         ),
         Axis = (
             backgroundcolor = :transparent,
@@ -114,6 +124,9 @@ function theme_rff()
             titlesize = 15,
             labelsize = 15,
 
+        ),
+        CairoMakie = Attributes(
+            px_per_unit = 5.0,
         ),
         Axis3 = (
             xgridvisible = false,

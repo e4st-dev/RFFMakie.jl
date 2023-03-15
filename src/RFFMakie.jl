@@ -92,7 +92,7 @@ function theme_rff()
             ygridcolor = colorant"#E1F0FC",
             xminorgridvisible = false,
             yminorgridvisible = false,
-            leftspinevisible = true,
+            leftspinevisible = false,
             rightspinevisible = false,
             bottomspinevisible = true,
             topspinevisible = false,
@@ -102,8 +102,8 @@ function theme_rff()
             topspinecolor = colorant"#04273C",
             xminorticksvisible = false,
             yminorticksvisible = false,
-            xticksvisible = true,
-            yticksvisible = true,
+            xticksvisible = false,
+            yticksvisible = false,
             xtickscolor = colorant"#04273C",
             ytickscolor = colorant"#04273C",
             xlabelpadding = 3,
@@ -116,6 +116,11 @@ function theme_rff()
             yticklabelsize=15,
             xlabelsize=15,
             ylabelsize=15,
+
+            # Fonts
+            xlabelfont=:bold,
+            ylabelfont=:bold,
+
         ),
         Legend = (
             framevisible = false,

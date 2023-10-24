@@ -166,6 +166,9 @@ function theme_rff()
     )
 end
 
+"""
+    example_plot() -> fig::Figure
+"""
 function example_plot()
     set_theme!(theme_rff())
     Random.seed!(1)
@@ -181,5 +184,22 @@ function example_plot()
     f
 end
 export example_plot
+
+"""
+    example_colors() -> fig::Figure
+
+Plots all the colors in [`rff_colors()`](@ref) color palettte.
+"""
+function example_colors()
+    f = Figure()
+    colors = rff_colors()
+    labels = map(i->"(#$(hex(colors[i]))) $i", 1:length(colors))
+    elements = [PolyElement(polycolor=c) for c in colors]
+    Legend(f[1,1], elements, labels, "RFF Color Palette", orientation=:horizontal, labelfont="Consolas", nbanks=Int(ceil(length(colors)/2)), framevisible=false)
+    colsize!(f.layout, 1, Aspect(1, 1.3))
+    resize_to_layout!(f)
+    f
+end
+export example_colors
 
 end # module

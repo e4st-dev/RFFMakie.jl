@@ -19,7 +19,7 @@ and then install it into julia.
 # Usage
 ```julia
 using RFFMakie
-using CairoMakie
-set_theme!(theme_rff()) 
-example_plot()
+fig = example_plot()
+save("example.svg", fig) # or .png or .pdf
 ```
+![example_plot](assets/example_plot.png)

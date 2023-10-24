@@ -4,9 +4,11 @@ Exports `theme_rff` to be used with Makie using the `set_theme!` function.
 Theming and color guidance comes from `https://media.rff.org/documents/RFFDigitalBrand-Guidelines.pdf`
 """
 module RFFMakie
+using Reexport
 
-using Makie
-using Colors
+@reexport using Makie
+@reexport using Colors
+@reexport using CairoMakie
 using Random
 
 export theme_rff, rff_colors, example_plot
@@ -165,19 +167,19 @@ function theme_rff()
 end
 
 function example_plot()
+    set_theme!(theme_rff())
     Random.seed!(1)
     f = Figure()
-    for i in 1:2, j in 1:2
-        Axis(f[i,j], title="My Title ($i, $j)")
-        lines!(f[i, j], 1:50, cumsum(randn(50)), label="My thing 1")
-        lines!(f[i, j], 1:50, cumsum(randn(50)), label="My thing 2")
-        lines!(f[i, j], 1:50, cumsum(randn(50)), label="My thing 3")
-        lines!(f[i, j], 1:50, cumsum(randn(50)), label="My thing 4")
-        scatter!(f[i,j], 1:5:50, zeros(length(1:5:50)), label="My other 1")
-        scatter!(f[i,j], 1:5:50, 3*ones(length(1:5:50)), label="My other 2")
-        axislegend(position=:lb)
-    end
+    ax = f[1,1] = Axis(f, title="My Title")
+    lines!(ax, 1:50, cumsum(randn(50)), label="My thing 1")
+    lines!(ax, 1:50, cumsum(randn(50)), label="My thing 2")
+    lines!(ax, 1:50, cumsum(randn(50)), label="My thing 3")
+    lines!(ax, 1:50, cumsum(randn(50)), label="My thing 4")
+    scatter!(ax, 1:5:50, zeros(length(1:5:50)), label="My other 1")
+    scatter!(ax, 1:5:50, 3*ones(length(1:5:50)), label="My other 2")
+    f[1,2] = Legend(f, ax, "Legend")
     f
 end
+export example_plot
 
 end # module

@@ -1,7 +1,7 @@
 name = "RFFMakie"
 uuid = "bdd0cfe9-1bbc-4c2f-b6dc-53835f28d58f"
 authors = ["Ethan Russell <erussell@rff.org>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 CairoMakie = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"

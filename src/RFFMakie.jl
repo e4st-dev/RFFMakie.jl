@@ -71,7 +71,7 @@ function theme_rff()
             italic = "Calibre Italic",
             bold_italic = "Calibre Bold Italic",
         ),
-        resolution = in2px(6.5, 4.5),
+        size = in2px(6.5, 4.5),
         textsize=15,
         fontsize = 15,
         textcolor = colorant"#04273C",

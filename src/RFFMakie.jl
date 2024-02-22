@@ -33,17 +33,37 @@ function rff_colors()
     ]
 end
 rff_colors(args...) = rff_colors()[args...]
-rff_black() = colorant"#04273C"; export rff_black
-rff_blue() = colorant"#88c4f4"; export rff_blue
-rff_coral() = colorant"#ff6663"; export rff_coral
-rff_green() = colorant"#50b161"; export rff_green
-rff_brown() = colorant"#74645e"; export rff_brown
-rff_purple() = colorant"#765ea5"; export rff_purple
-rff_orange() = colorant"#f4a25f"; export rff_orange
-rff_yellow() = colorant"#ebd367"; export rff_yellow
-rff_black50() = colorant"#82939e"; export rff_black50
-rff_blue50() = colorant"#c3e2fa"; export rff_blue50
-rff_purple50() = colorant"#baaed2"; export rff_purple50
+
+"""
+    rff_color(s::Symbol, v=1)
+
+Returns the RFF color associated with `s`, where `s` can be `black`, `blue`, `coral`, `green`, `brown`, `purple`, `orange`, or `yellow`.
+"""
+rff_color(s::Symbol) = rff_color(Val(s))
+rff_color(s::Symbol, v) = rff_color(Val(s), v)
+rff_color(s::Val, v) = weighted_color_mean(v, colorant"#ffffff", rff_color(s))
+export rff_color
+
+rff_color(::Val{:black}) = colorant"#04273C"
+rff_color(::Val{:blue}) = colorant"#88c4f4"
+rff_color(::Val{:coral}) = colorant"#ff6663"
+rff_color(::Val{:green}) = colorant"#50b161"
+rff_color(::Val{:brown}) = colorant"#74645e"
+rff_color(::Val{:purple}) = colorant"#765ea5"
+rff_color(::Val{:orange}) = colorant"#f4a25f"
+rff_color(::Val{:yellow}) = colorant"#ebd367"
+
+rff_black() = rff_color(:black); export rff_black
+rff_blue() = rff_color(:blue); export rff_blue
+rff_coral() = rff_color(:coral); export rff_coral
+rff_green() = rff_color(:green); export rff_green
+rff_brown() = rff_color(:brown); export rff_brown
+rff_purple() = rff_color(:purple); export rff_purple
+rff_orange() = rff_color(:orange); export rff_orange
+rff_yellow() = rff_color(:yellow); export rff_yellow
+rff_black50() = rff_color(:black, 0.5); export rff_black50
+rff_blue50() = rff_color(:blue, 0.5); export rff_blue50
+rff_purple50() = rff_color(:purple, 0.5); export rff_purple50
 
 
 """
@@ -53,7 +73,7 @@ rff_purple50() = colorant"#baaed2"; export rff_purple50
 
     in2px(v_in) -> v_px
 
-Converts inches to pixels, so that, when a figure is sized to the provided inches (i.e. in word or powerpoint), the fonts will be the stated font sizes.  To be used with `Makie.Figure`, i.e. `f = Figure(resolution=in2px(6.5,4.5))`
+Converts inches to pixels, so that, when a figure is sized to the provided inches (i.e. in word or powerpoint), the fonts will be the stated font sizes.  To be used with `Makie.Figure`, i.e. `f = Figure(size=in2px(6.5,4.5))`
 """
 function in2px(args...)
     return in2px(args)
@@ -74,8 +94,8 @@ function theme_rff()
         size = in2px(6.5, 4.5),
         textsize=15,
         fontsize = 15,
-        textcolor = colorant"#04273C",
-        linecolor = colorant"#04273C",
+        textcolor = rff_black(),
+        linecolor = rff_black(),
         palette=(
             color=rff_colors(),
         ),
@@ -98,16 +118,16 @@ function theme_rff()
             rightspinevisible = false,
             bottomspinevisible = true,
             topspinevisible = false,
-            leftspinecolor = colorant"#04273C",
-            rightspinecolor = colorant"#04273C",
-            bottomspinecolor = colorant"#04273C",
-            topspinecolor = colorant"#04273C",
+            leftspinecolor = rff_black(),
+            rightspinecolor = rff_black(),
+            bottomspinecolor = rff_black(),
+            topspinecolor = rff_black(),
             xminorticksvisible = false,
             yminorticksvisible = false,
             xticksvisible = false,
             yticksvisible = false,
-            xtickscolor = colorant"#04273C",
-            ytickscolor = colorant"#04273C",
+            xtickscolor = rff_black(),
+            ytickscolor = rff_black(),
             xlabelpadding = 3,
             ylabelpadding = 3,
 
@@ -126,7 +146,7 @@ function theme_rff()
         ),
         Legend = (
             framevisible = false,
-            framecolor = colorant"#04273C",
+            framecolor = rff_black(),
             padding = (0,0,0,0),
             titlesize = 15,
             labelsize = 15,

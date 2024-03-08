@@ -41,7 +41,7 @@ Returns the RFF color associated with `s`, where `s` can be `black`, `blue`, `co
 """
 rff_color(s::Symbol) = rff_color(Val(s))
 rff_color(s::Symbol, v) = rff_color(Val(s), v)
-rff_color(s::Val, v) = weighted_color_mean(v, colorant"#ffffff", rff_color(s))
+rff_color(s::Val, v) = weighted_color_mean(v, rff_color(s), colorant"#ffffff")
 export rff_color
 
 rff_color(::Val{:black}) = colorant"#04273C"
@@ -140,8 +140,8 @@ function theme_rff()
             ylabelsize=15,
 
             # Fonts
-            xlabelfont=:bold,
-            ylabelfont=:bold,
+            xlabelfont=:regular,
+            ylabelfont=:regular,
 
         ),
         Legend = (
